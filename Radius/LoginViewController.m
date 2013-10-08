@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "FBManager.h"
 
 @interface LoginViewController ()
 
@@ -19,11 +20,20 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
+- (IBAction)loginClicked:(id)sender {
+    [[FBManager sharedInstance] openSessionWithMeWithCompletionBlock:^(id result, NSError *error) {
+        if(!error){
+            NSLog(@"result: %@", result);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else{
+            NSLog(@"error: %@", error);
+        }
+    }];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end

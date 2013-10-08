@@ -57,7 +57,7 @@
 		25A728EB180203EB00B7B6AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		25A728ED180203EB00B7B6AE /* RadiusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RadiusTests.m; sourceTree = "<group>"; };
 		25A728F9180204EE00B7B6AE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		25A728FA180204EE00B7B6AE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		25A728FA180204EE00B7B6AE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MainViewController.m; sourceTree = "<group>"; tabWidth = 4; wrapsLines = 1; };
 		25A728FC18020EE500B7B6AE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		25A728FE180214ED00B7B6AE /* FBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBManager.h; sourceTree = "<group>"; };
 		25A728FF180214ED00B7B6AE /* FBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBManager.m; sourceTree = "<group>"; };
@@ -500,6 +500,7 @@
 				25A728F3180203EB00B7B6AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		25A728F4180203EB00B7B6AE /* Build configuration list for PBXNativeTarget "RadiusTests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +509,7 @@
 				25A728F6180203EB00B7B6AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

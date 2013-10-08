@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "FBManager.h"
 
 @interface MainViewController ()
 
@@ -27,6 +28,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    if(![[FBManager sharedInstance] checkFacebookLoggedIn]){
+        [self performSegueWithIdentifier:@"LoginModal" sender:self];
+    } else{
+        [[FBManager sharedInstance] openSessionFromCacheWithCompletionBlock:^(id result, NSError *error) {
+            
+            NSLog(@"fb info2: %@", result);
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning

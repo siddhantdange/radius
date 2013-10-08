@@ -8,19 +8,14 @@
 
 #import "AppDelegate.h"
 #import "FBManager.h"
+#import "LoginViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        
     [FBManager initInstance];
-    [[FBManager sharedInstance] openSessionWithMeWithCompletionBlock:^(id result, NSError *error) {
-        if(!error){
-            NSLog(@"result: %@", result);
-        } else{
-            NSLog(@"error: %@", error);
-        }
-    }];
     // Override point for customization after application launch.
     return YES;
 }

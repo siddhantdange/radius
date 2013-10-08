@@ -79,8 +79,10 @@ static FBManager *gInstance;
 
 -(void)fetchMyInformationWithCompletionBlock:(void(^)(id result, NSError *error))completionBlock{
     [FBRequestConnection startWithGraphPath:@"/me" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        if(self.user == nil)
+        if(self.user == nil) {
             self.user = result;
+        }
+        
         completionBlock(result,error);
     }];
 }
@@ -88,17 +90,29 @@ static FBManager *gInstance;
 -(void)openSessionFromCacheWithCompletionBlock:(void(^)(id result, NSError *error))completionBlock{
     FBAccessTokenData *accessToken = [[FBSession activeSession] accessTokenData];
     
-    self.fbSession = [[FBSession alloc] initWithAppID:nil
+/*    self.fbSession = [[FBSession alloc] initWithAppID:nil
                                                      permissions:nil
                                                  defaultAudience:FBSessionDefaultAudienceNone
                                                  urlSchemeSuffix:nil
-                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance] ];
-    [FBSession setActiveSession:self.fbSession];
+                                              tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+    [FBSession setActiveSession:self.fbSession];*/
     
-    [FBSession.activeSession openFromAccessTokenData:accessToken completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+    [FBSession.activeSession openWithBehavior:FBSessionLoginBehaviorUseSystemAccountIfPresent completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        
         self.fbSession = session;
         [self fetchMyInformationWithCompletionBlock:completionBlock];
     }];
+    
+  /*  [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        
+        self.fbSession = session;
+        [self fetchMyInformationWithCompletionBlock:completionBlock];
+    }];
+    
+ /*   [FBSession.activeSession openFromAccessTokenData:accessToken completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        self.fbSession = session;
+        [self fetchMyInformationWithCompletionBlock:completionBlock];
+    }];*/
 }
 
 -(void)openSessionWithMeWithCompletionBlock:(void(^)(id result, NSError* error))completionBlock{
